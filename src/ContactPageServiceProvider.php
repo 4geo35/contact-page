@@ -1,16 +1,19 @@
 <?php
 
 namespace GIS\ContactPage;
+
+use GIS\ContactPage\Livewire\Admin\Contacts\CreateWire as ContactCreateWire;
 use GIS\ContactPage\Models\Contact;
 use GIS\ContactPage\Observers\ContactObserver;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class ContactPageServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
         // views
-        $this->loadViewsFrom(__DIR__ . "/resources/views", "cp");
+        $this->loadViewsFrom(__DIR__ . "/resources/views", "ctp");
 
         // Livewire
         $this->addLivewireComponents();
@@ -38,6 +41,11 @@ class ContactPageServiceProvider extends ServiceProvider
 
     protected function addLivewireComponents(): void
     {
-
+        // Contacts
+        $component = config("contact-page.customContactCreateComponent");
+        Livewire::component(
+            "ctp-contact-create",
+            $component ?? ContactCreateWire::class
+        );
     }
 }

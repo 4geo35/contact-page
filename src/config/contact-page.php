@@ -6,4 +6,5 @@ return [
     "defaultIco" => "islands#blueIcon",
     "customContactModel" => null,
     "customContactObserver" => null,
+    "customContactCreateComponent" => null,
 ];

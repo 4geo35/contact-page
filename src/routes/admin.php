@@ -7,6 +7,6 @@ Route::middleware(["web", "auth", "app-management"])
     ->as("admin.")
     ->group(function () {
         Route::get("contacts", function () {
-            return view("cp::admin.contacts.index");
+            return view("ctp::admin.contacts.index");
         })->name("contacts");
     });
