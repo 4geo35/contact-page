@@ -6,7 +6,7 @@
         <livewire:ctp-contact-create />
         <div class="row">
             <div class="col w-1/3">
-                List
+                <livewire:ctp-contact-list />
             </div>
             <div class="col w-2/3">
                 Info

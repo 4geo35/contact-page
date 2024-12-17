@@ -7,4 +7,5 @@ return [
     "customContactModel" => null,
     "customContactObserver" => null,
     "customContactCreateComponent" => null,
+    "customContactListComponent" => null,
 ];
