@@ -5,12 +5,18 @@ namespace GIS\ContactPage\Livewire\Admin\Contacts;
 use GIS\ContactPage\Interfaces\ContactInterface;
 use GIS\ContactPage\Models\Contact;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class ListWire extends Component
 {
     public bool $hasSearch = false;
+    public string $updatedAt;
+
+    public function mount(): void
+    {
+        $this->updatedAt = now()->toString();
+    }
 
     public function render(): View
     {
@@ -19,8 +25,9 @@ class ListWire extends Component
             ->select("id", "title", "priority")
             ->orderBy("priority", "asc")
             ->get();
+        $updated = $this->updatedAt;
 
-        return view('ctp::livewire.admin.contacts.list-wire', compact("contacts"));
+        return view('ctp::livewire.admin.contacts.list-wire', compact("contacts", "updated"));
     }
 
     public function reorderItems(array $newOrder): void
@@ -31,6 +38,13 @@ class ListWire extends Component
             $contact->priority = $priority;
             $contact->save();
         }
+    }
+
+    #[On('new-contact')]
+    public function updateList(): void
+    {
+        $this->dispatch("update-list");
+        $this->updatedAt = now()->toString();
     }
 
     protected function findContact(int $id): ?ContactInterface

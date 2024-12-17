@@ -35,8 +35,9 @@ class CreateWire extends Component
         // Validation
         $this->validate();
         $contactModel = config("contact-page.customContactModel") ?? Contact::class;
-        $contactModel::create(["title" => $this->title]);
+        $contact = $contactModel::create(["title" => $this->title]);
         session()->flash("success", __("Contact successfully added"));
         $this->reset("title");
+        $this->dispatch("new-contact", id: $contact->id);
     }
 }
