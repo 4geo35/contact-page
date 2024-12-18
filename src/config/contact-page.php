@@ -8,4 +8,5 @@ return [
     "customContactObserver" => null,
     "customContactCreateComponent" => null,
     "customContactListComponent" => null,
+    "customContactShowComponent" => null,
 ];

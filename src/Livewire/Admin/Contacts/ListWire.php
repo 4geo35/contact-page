@@ -12,6 +12,7 @@ class ListWire extends Component
 {
     public bool $hasSearch = false;
     public string $updatedAt;
+    public int|null $contactId = null;
 
     public function mount(): void
     {
@@ -41,10 +42,17 @@ class ListWire extends Component
     }
 
     #[On('new-contact')]
-    public function updateList(): void
+    public function updateList(int $id): void
     {
         $this->dispatch("update-list");
         $this->updatedAt = now()->toString();
+        $this->setContact($id);
+    }
+
+    public function setContact(int $id): void
+    {
+        $this->contactId = $id;
+        $this->dispatch("set-contact", id: $id);
     }
 
     protected function findContact(int $id): ?ContactInterface

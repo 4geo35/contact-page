@@ -9,7 +9,7 @@
                 <livewire:ctp-contact-list />
             </div>
             <div class="col w-2/3">
-                Info
+                <livewire:ctp-contact-show />
             </div>
         </div>
     </div>

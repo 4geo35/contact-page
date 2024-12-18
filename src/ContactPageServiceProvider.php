@@ -4,6 +4,7 @@ namespace GIS\ContactPage;
 
 use GIS\ContactPage\Livewire\Admin\Contacts\CreateWire as ContactCreateWire;
 use GIS\ContactPage\Livewire\Admin\Contacts\ListWire as ContactListWire;
+use GIS\ContactPage\Livewire\Admin\Contacts\ShowWire as ContactShowWire;
 use GIS\ContactPage\Models\Contact;
 use GIS\ContactPage\Observers\ContactObserver;
 use Illuminate\Support\ServiceProvider;
@@ -53,6 +54,12 @@ class ContactPageServiceProvider extends ServiceProvider
         Livewire::component(
             "ctp-contact-list",
             $component ?? ContactListWire::class
+        );
+
+        $component = config("contact-page.customContactShowComponent");
+        Livewire::component(
+            "ctp-contact-show",
+            $component ?? ContactShowWire::class
         );
 
     }
