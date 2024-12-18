@@ -13,4 +13,10 @@
             </div>
         </div>
     </div>
+
+    @push("js-lib")
+        <script src="https://api-maps.yandex.ru/2.1/?apikey={{ config('contact-page.mapApiKey') }}&lang=ru_RU"
+                type="text/javascript">
+        </script>
+    @endpush
 </x-admin-layout>

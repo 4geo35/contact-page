@@ -7,11 +7,7 @@
         </div>
     @else
         @include("ctp::admin.contacts.includes.edit-form")
-        <div class="card">
-            <div class="card-body">
-
-            </div>
-        </div>
+        @include("ctp::admin.contacts.includes.tabs")
         @include("ctp::admin.contacts.includes.show-modals")
     @endif
 </div>

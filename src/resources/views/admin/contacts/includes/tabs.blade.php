@@ -1,0 +1,31 @@
+<div class="card" x-data="{ show: 'map' }">
+    <div class="card-header">
+        <x-tt::tabs class="flex items-center space-x-indent-half">
+            <x-tt::tabs.item name="contacts"
+                             active="bg-primary text-white"
+                             passive="bg-transparent text-primary hover:text-primary-hover"
+                             class="px-indent py-indent-half mb-2 rounded-xl">
+                {{ __("Contacts") }}
+            </x-tt::tabs.item>
+            <x-tt::tabs.item name="map"
+                             active="bg-primary text-white"
+                             passive="bg-transparent text-primary hover:text-primary-hover"
+                             class="px-indent py-indent-half mb-2 rounded-xl">
+                {{ __("Map") }}
+            </x-tt::tabs.item>
+            <x-tt::tabs.item name="workDays"
+                             active="bg-primary text-white"
+                             passive="bg-transparent text-primary hover:text-primary-hover"
+                             class="px-indent py-indent-half mb-2 rounded-xl">
+                {{ __("Work days") }}
+            </x-tt::tabs.item>
+        </x-tt::tabs>
+    </div>
+    <div class="card-body">
+        <x-tt::tabs.content name="contacts">Contacts</x-tt::tabs.content>
+
+        <x-tt::tabs.content name="map">Map</x-tt::tabs.content>
+
+        <x-tt::tabs.content name="workDays">Work days</x-tt::tabs.content>
+    </div>
+</div>

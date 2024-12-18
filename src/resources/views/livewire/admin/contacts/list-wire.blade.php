@@ -1,5 +1,8 @@
 <div class="card">
     <div class="card-body">
+        @if (!$contacts->count())
+            <p>{{ __("List is empty") }}</p>
+        @endif
         <div class="space-y-indent-half">
             <x-tt::notifications.error prefix="list-" />
             <x-tt::notifications.success prefix="list-" />

@@ -4,6 +4,10 @@
     "Address": "Адрес",
     "Description": "Описание",
 
+    "Map": "Карта",
+    "Work days": "Рабочие дни",
+
+    "List is empty": "Список пуст",
     "Contact successfully added": "Контакт успешно добавлен",
     "Contact not found": "Контакт не найден",
     "Delete contact": "Удалить контакт",

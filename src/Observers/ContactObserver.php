@@ -10,6 +10,9 @@ class ContactObserver
     public function creating(ContactInterface $contact): void
     {
         $contact->ico = config("contact-page.defaultIco");
+        $contact->latitude = config("contact-page.defaultLatitude");
+        $contact->longitude = config("contact-page.defaultLongitude");
+
         $contactModel = config("contact-page.customContactModel") ?? Contact::class;
         $priority = $contactModel::query()
             ->select("id", "priority")
