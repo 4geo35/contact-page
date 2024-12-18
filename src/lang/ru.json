@@ -1,5 +1,15 @@
 {
     "Contacts": "Контакты",
+    "Title": "Заголовок",
+    "Address": "Адрес",
+    "Description": "Описание",
+
     "Contact successfully added": "Контакт успешно добавлен",
-    "Contact not found": "Контакт не найден"
+    "Contact not found": "Контакт не найден",
+    "Delete contact": "Удалить контакт",
+    "It will be impossible to restore the contact!": "Будет невозможно удалить контакт!",
+    "List of possible labels": "Список возможных меток",
+    "Select one of the contacts, or add a new one": "Выберите один из контактов, или добавьте новый",
+    "Contact successfully deleted": "Контакт успешно удален",
+    "Contact successfully updated": "Контакт успешно обновлен"
 }

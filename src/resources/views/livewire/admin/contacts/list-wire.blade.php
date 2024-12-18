@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-body">
         <div class="space-y-indent-half">
-            <x-tt::notifications.error />
-            <x-tt::notifications.success />
+            <x-tt::notifications.error prefix="list-" />
+            <x-tt::notifications.success prefix="list-" />
             <x-tt::table drag-root>
                 <x-slot name="body">
                     @foreach($contacts as $key => $item)

@@ -42,11 +42,24 @@ class ListWire extends Component
     }
 
     #[On('new-contact')]
-    public function updateList(int $id): void
+    public function updateList(int $id = null): void
     {
         $this->dispatch("update-list");
         $this->updatedAt = now()->toString();
-        $this->setContact($id);
+        if ($id) $this->setContact($id);
+    }
+
+    #[On('update-contact')]
+    public function refreshList(): void
+    {
+        $this->updatedAt = now()->toString();
+    }
+
+    #[On('delete-contact')]
+    public function resetContact(): void
+    {
+        $this->reset("contactId");
+        $this->updateList();
     }
 
     public function setContact(int $id): void
