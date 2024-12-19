@@ -5,7 +5,7 @@
     <x-tt::notifications.success prefix="url-" />
 
     <form wire:submit.prevent="addUrl" class="flex items-center space-x-indent-half">
-        <div>
+        <div class="flex-auto">
             <input type="text" id="url" required
                    placeholder="{{ __('Url address') }}" aria-label="{{ __('Url address') }}"
                    class="form-control {{ $errors->has("url") ? "border-danger" : "" }}"
@@ -24,7 +24,7 @@
             @foreach($urls as $urlItem)
                 @if ($displayUrlEdit && $itemId === $urlItem->id)
                     <form wire:submit.prevent="updateUrl" class="flex items-center space-x-indent-half">
-                        <div>
+                        <div class="flex-auto">
                             <input type="text" id="editUrl" required
                                    placeholder="{{ __('Url address') }}" aria-label="{{ __('Url address') }}"
                                    class="form-control {{ $errors->has("editUrl") ? "border-danger" : "" }}"

@@ -5,7 +5,7 @@
     <x-tt::notifications.success prefix="phone-" />
 
     <form wire:submit.prevent="addPhone" class="flex items-center space-x-indent-half" x-data>
-        <div>
+        <div class="flex-auto">
             <input type="text" id="phone" required
                    placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
                    class="form-control {{ $errors->has("phone") ? "border-danger" : "" }}"
@@ -15,7 +15,7 @@
             <x-tt::form.error name="phone"/>
         </div>
 
-        <div>
+        <div class="flex-auto">
             <input type="text" id="phoneComment"
                    placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
                    class="form-control {{ $errors->has("phoneComment") ? "border-danger" : "" }}"
@@ -34,7 +34,7 @@
             @foreach($phones as $phoneItem)
                 @if ($displayPhoneEdit && $itemId === $phoneItem->id)
                     <form wire:submit.prevent="updatePhone" class="flex items-center space-x-indent-half" x-data>
-                        <div>
+                        <div class="flex-auto">
                             <input type="text" id="editPhone" required
                                    placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
                                    class="form-control {{ $errors->has("editPhone") ? "border-danger" : "" }}"
@@ -44,7 +44,7 @@
                             <x-tt::form.error name="editPhone"/>
                         </div>
 
-                        <div>
+                        <div class="flex-auto">
                             <input type="text" id="editPhoneComment"
                                    placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
                                    class="form-control {{ $errors->has("editPhoneComment") ? "border-danger" : "" }}"

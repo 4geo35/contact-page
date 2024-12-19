@@ -5,7 +5,7 @@
     <x-tt::notifications.success prefix="email-" />
 
     <form wire:submit.prevent="addEmail" class="flex items-center space-x-indent-half">
-        <div>
+        <div class="flex-auto">
             <input type="email" id="email" required
                    placeholder="Email" aria-label="Email"
                    class="form-control {{ $errors->has("email") ? "border-danger" : "" }}"
@@ -14,7 +14,7 @@
             <x-tt::form.error name="email"/>
         </div>
 
-        <div>
+        <div class="flex-auto">
             <input type="text" id="emailComment"
                    placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
                    class="form-control {{ $errors->has("emailComment") ? "border-danger" : "" }}"
@@ -33,7 +33,7 @@
             @foreach($emails as $emailItem)
                 @if ($displayEmailEdit && $itemId === $emailItem->id)
                     <form wire:submit.prevent="updateEmail" class="flex items-center space-x-indent-half">
-                        <div>
+                        <div class="flex-auto">
                             <input type="email" id="editEmail" required
                                    placeholder="Email" aria-label="Email"
                                    class="form-control {{ $errors->has("editEmail") ? "border-danger" : "" }}"
@@ -42,7 +42,7 @@
                             <x-tt::form.error name="editEmail"/>
                         </div>
 
-                        <div>
+                        <div class="flex-auto">
                             <input type="text" id="editEmailComment"
                                    placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
                                    class="form-control {{ $errors->has("editEmailComment") ? "border-danger" : "" }}"
