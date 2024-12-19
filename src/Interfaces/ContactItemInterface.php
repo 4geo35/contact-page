@@ -3,7 +3,7 @@
 namespace GIS\ContactPage\Interfaces;
 
 use ArrayAccess;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use JsonSerializable;
 use Stringable;
 use Illuminate\Contracts\Broadcasting\HasBroadcastChannel;
@@ -13,12 +13,8 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\CanBeEscapedWhenCastToString;
 use Illuminate\Contracts\Support\Jsonable;
 
-interface ContactInterface extends Arrayable, ArrayAccess, CanBeEscapedWhenCastToString,
+interface ContactItemInterface extends Arrayable, ArrayAccess, CanBeEscapedWhenCastToString,
     HasBroadcastChannel, Jsonable, JsonSerializable, QueueableEntity, Stringable, UrlRoutable
 {
-    public function items(): HasMany;
-    public function phones(): HasMany;
-    public function emails(): HasMany;
-    public function sites(): HasMany;
-    public function socials(): HasMany;
+    public function contact(): BelongsTo;
 }

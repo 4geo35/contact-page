@@ -20,4 +20,11 @@ class ContactObserver
         if (empty($priority)) $priority = 0;
         $contact->priority = $priority + 1;
     }
+
+    public function deleted(ContactInterface $contact): void
+    {
+        foreach ($contact->items as $item) {
+            $item->delete();
+        }
+    }
 }

@@ -7,6 +7,8 @@ use GIS\ContactPage\Livewire\Admin\Contacts\ListWire as ContactListWire;
 use GIS\ContactPage\Livewire\Admin\Contacts\ShowWire as ContactShowWire;
 use GIS\ContactPage\Livewire\Admin\Contacts\MapWire as ContactMapWire;
 use GIS\ContactPage\Models\Contact;
+use GIS\ContactPage\Models\ContactItem;
+use GIS\ContactPage\Observers\ContactItemObserver;
 use GIS\ContactPage\Observers\ContactObserver;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -25,6 +27,10 @@ class ContactPageServiceProvider extends ServiceProvider
         $contactObserverClass = config("contact-page.customContactObserver") ?? ContactObserver::class;
         $contactModelClass = config("contact-page.customContactModel") ?? Contact::class;
         $contactModelClass::observe($contactObserverClass);
+
+        $contactItemObserverClass = config("contact-page.customContactItemObserver") ?? ContactItemObserver::class;
+        $contactItemModelClass = config("contact-page.customContactItemModel") ?? ContactItem::class;
+        $contactItemModelClass::observe($contactItemObserverClass);
     }
 
     public function register(): void
