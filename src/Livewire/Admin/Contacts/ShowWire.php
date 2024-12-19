@@ -11,6 +11,7 @@ use Livewire\Attributes\On;
 class ShowWire extends Component
 {
     public ContactInterface|null $contact = null;
+    public int|null $contactId = null;
 
     public bool $displayDelete = false;
 
@@ -18,6 +19,20 @@ class ShowWire extends Component
     public string $address = "";
     public string $description = "";
     public string $ico = "";
+
+    protected function queryString(): array
+    {
+        return [
+            "contactId" => ["as" => "contact", "except" => ""]
+        ];
+    }
+
+    public function mount(): void
+    {
+        if ($this->contactId) {
+            $this->setContact($this->contactId);
+        }
+    }
 
     public function rules(): array
     {

@@ -14,6 +14,13 @@ class ListWire extends Component
     public string $updatedAt;
     public int|null $contactId = null;
 
+    protected function queryString(): array
+    {
+        return [
+            "contactId" => ["as" => "contact", "except" => ""]
+        ];
+    }
+
     public function mount(): void
     {
         $this->updatedAt = now()->toString();

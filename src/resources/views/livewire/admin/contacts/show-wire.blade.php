@@ -2,6 +2,8 @@
     @if (! $contact)
         <div class="card">
             <div class="card-body">
+                <x-tt::notifications.error prefix="show-" />
+                <x-tt::notifications.success prefix="show-" />
                 <p>{{ __("Select one of the contacts, or add a new one") }}</p>
             </div>
         </div>
