@@ -8,12 +8,13 @@ use GIS\ContactPage\Models\ContactItem;
 use GIS\ContactPage\Traits\EditEmailsTrait;
 use GIS\ContactPage\Traits\EditPhonesTrait;
 use GIS\ContactPage\Traits\EditSitesTrait;
+use GIS\ContactPage\Traits\EditSocialsTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class ItemsWire extends Component
 {
-    use EditPhonesTrait, EditEmailsTrait, EditSitesTrait;
+    use EditPhonesTrait, EditEmailsTrait, EditSitesTrait, EditSocialsTrait;
 
     public ContactInterface $contact;
 
