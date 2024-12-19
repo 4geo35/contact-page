@@ -18,6 +18,9 @@ class ItemsWire extends Component
 
     public string $phone = "";
     public string $phoneComment = "";
+    public string $editPhone = "";
+    public string $editPhoneComment = "";
+    public bool $displayPhoneEdit = false;
 
     public function render(): View
     {
@@ -47,6 +50,49 @@ class ItemsWire extends Component
         session()->flash("phone-success", __("Phone number successfully added"));
 
         $this->reset("phone", "phoneComment");
+    }
+
+    public function showPhoneEdit(int $id): void
+    {
+        $this->itemId = $id;
+        $this->type = "phone";
+        $item = $this->findItem();
+        if (! $item) {
+            $this->resetGeneralFields();
+            return;
+        }
+        $this->editPhone = $item->value;
+        $this->editPhoneComment = $item->comment;
+        $this->displayPhoneEdit = true;
+    }
+
+    public function closePhoneEdit(): void
+    {
+        $this->resetGeneralFields();
+        $this->reset("displayPhoneEdit");
+    }
+
+    public function updatePhone(): void
+    {
+        $this->type = "phone";
+        $item = $this->findItem();
+        if (! $item) {
+            $this->resetGeneralFields();
+            return;
+        }
+        $this->validate([
+            "editPhone" => ["required", "max:18"],
+            "editPhoneComment" => ["nullable", "max:150"]
+        ], [], [
+            "editPhone" => __("Phone"),
+            "editPhoneComment" => __("Comment")
+        ]);
+        $item->update([
+            "value" => $this->editPhone,
+            "comment" => $this->editPhoneComment
+        ]);
+        session()->flash("phone-success", __("Phone number successfully updated"));
+        $this->closePhoneEdit();
     }
 
     public function showDelete(int $id, string $type): void

@@ -30,5 +30,6 @@
     "Item not found": "Элемент не найден",
     "Delete item": "Удалить элемент",
     "It will be impossible to restore the item!": "Будет невозможно восстановить элемент!",
-    "Element successfully deleted": "Элемент успешно удален"
+    "Element successfully deleted": "Элемент успешно удален",
+    "Phone number successfully updated": "Номер телефона успешно обновлен"
 }

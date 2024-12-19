@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("type");
             $table->string("value");
             $table->string("comment")->nullable();
+            $table->string("additionally")->nullable();
             $table->string("priority")->default(0);
             $table->timestamps();
         });
