@@ -33,9 +33,9 @@ class Contact extends Model implements ContactInterface
         return $this->items()->where("type", "email");
     }
 
-    public function sites(): HasMany
+    public function urls(): HasMany
     {
-        return $this->items()->where("type", "site");
+        return $this->items()->where("type", "url");
     }
 
     public function socials(): HasMany

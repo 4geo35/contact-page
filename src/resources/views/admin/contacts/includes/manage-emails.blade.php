@@ -4,31 +4,29 @@
     <x-tt::notifications.error prefix="email-" />
     <x-tt::notifications.success prefix="email-" />
 
-    <div>
-        <form wire:submit.prevent="addEmail" class="flex items-center space-x-indent-half">
-            <div>
-                <input type="email" id="email" required
-                       placeholder="Email" aria-label="Email"
-                       class="form-control {{ $errors->has("email") ? "border-danger" : "" }}"
-                       wire:loading.attr="disabled"
-                       wire:model="email">
-                <x-tt::form.error name="email"/>
-            </div>
+    <form wire:submit.prevent="addEmail" class="flex items-center space-x-indent-half">
+        <div>
+            <input type="email" id="email" required
+                   placeholder="Email" aria-label="Email"
+                   class="form-control {{ $errors->has("email") ? "border-danger" : "" }}"
+                   wire:loading.attr="disabled"
+                   wire:model="email">
+            <x-tt::form.error name="email"/>
+        </div>
 
-            <div>
-                <input type="text" id="emailComment"
-                       placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
-                       class="form-control {{ $errors->has("emailComment") ? "border-danger" : "" }}"
-                       wire:loading.attr="disabled"
-                       wire:model="emailComment">
-                <x-tt::form.error name="emailComment"/>
-            </div>
+        <div>
+            <input type="text" id="emailComment"
+                   placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
+                   class="form-control {{ $errors->has("emailComment") ? "border-danger" : "" }}"
+                   wire:loading.attr="disabled"
+                   wire:model="emailComment">
+            <x-tt::form.error name="emailComment"/>
+        </div>
 
-            <button type="submit" class="btn btn-primary">
-                {{ __("Add") }}
-            </button>
-        </form>
-    </div>
+        <button type="submit" class="btn btn-primary">
+            {{ __("Add") }}
+        </button>
+    </form>
 
     @if ($emails->count())
         <div class="space-y-indent-half p-indent border border-secondary rounded-lg">
@@ -38,7 +36,7 @@
                         <div>
                             <input type="email" id="editEmail" required
                                    placeholder="Email" aria-label="Email"
-                                   class="form-control {{ $errors->has("editPhone") ? "border-danger" : "" }}"
+                                   class="form-control {{ $errors->has("editEmail") ? "border-danger" : "" }}"
                                    wire:loading.attr="disabled"
                                    wire:model="editEmail">
                             <x-tt::form.error name="editEmail"/>

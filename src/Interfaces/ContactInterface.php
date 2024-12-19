@@ -19,6 +19,6 @@ interface ContactInterface extends Arrayable, ArrayAccess, CanBeEscapedWhenCastT
     public function items(): HasMany;
     public function phones(): HasMany;
     public function emails(): HasMany;
-    public function sites(): HasMany;
+    public function urls(): HasMany;
     public function socials(): HasMany;
 }

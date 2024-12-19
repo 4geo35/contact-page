@@ -7,12 +7,13 @@ use GIS\ContactPage\Interfaces\ContactItemInterface;
 use GIS\ContactPage\Models\ContactItem;
 use GIS\ContactPage\Traits\EditEmailsTrait;
 use GIS\ContactPage\Traits\EditPhonesTrait;
+use GIS\ContactPage\Traits\EditSitesTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class ItemsWire extends Component
 {
-    use EditPhonesTrait, EditEmailsTrait;
+    use EditPhonesTrait, EditEmailsTrait, EditSitesTrait;
 
     public ContactInterface $contact;
 
@@ -24,10 +25,11 @@ class ItemsWire extends Component
     {
         $phones = $this->contact->phones()->orderBy("priority")->get();
         $emails = $this->contact->emails()->orderBy("priority")->get();
+        $urls = $this->contact->urls()->orderBy("priority")->get();
 
         return view(
             'ctp::livewire.admin.contacts.items-wire',
-            compact("phones", "emails")
+            compact("phones", "emails", "urls")
         );
     }
 

@@ -4,6 +4,7 @@
 
     @include("ctp::admin.contacts.includes.manage-phones")
     @include("ctp::admin.contacts.includes.manage-emails")
+    @include("ctp::admin.contacts.includes.manage-urls")
 
     @include("ctp::admin.contacts.includes.items-modals")
 </div>

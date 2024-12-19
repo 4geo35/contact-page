@@ -4,32 +4,30 @@
     <x-tt::notifications.error prefix="phone-" />
     <x-tt::notifications.success prefix="phone-" />
 
-    <div>
-        <form wire:submit.prevent="addPhone" class="flex items-center space-x-indent-half" x-data>
-            <div>
-                <input type="text" id="phone" required
-                       placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
-                       class="form-control {{ $errors->has("phone") ? "border-danger" : "" }}"
-                       x-mask="+7 (999) 999-99-99"
-                       wire:loading.attr="disabled"
-                       wire:model="phone">
-                <x-tt::form.error name="phone"/>
-            </div>
+    <form wire:submit.prevent="addPhone" class="flex items-center space-x-indent-half" x-data>
+        <div>
+            <input type="text" id="phone" required
+                   placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
+                   class="form-control {{ $errors->has("phone") ? "border-danger" : "" }}"
+                   x-mask="+7 (999) 999-99-99"
+                   wire:loading.attr="disabled"
+                   wire:model="phone">
+            <x-tt::form.error name="phone"/>
+        </div>
 
-            <div>
-                <input type="text" id="phoneComment"
-                       placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
-                       class="form-control {{ $errors->has("phoneComment") ? "border-danger" : "" }}"
-                       wire:loading.attr="disabled"
-                       wire:model="phoneComment">
-                <x-tt::form.error name="phoneComment"/>
-            </div>
+        <div>
+            <input type="text" id="phoneComment"
+                   placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
+                   class="form-control {{ $errors->has("phoneComment") ? "border-danger" : "" }}"
+                   wire:loading.attr="disabled"
+                   wire:model="phoneComment">
+            <x-tt::form.error name="phoneComment"/>
+        </div>
 
-            <button type="submit" class="btn btn-primary">
-                {{ __("Add") }}
-            </button>
-        </form>
-    </div>
+        <button type="submit" class="btn btn-primary">
+            {{ __("Add") }}
+        </button>
+    </form>
 
     @if ($phones->count())
         <div class="space-y-indent-half p-indent border border-secondary rounded-lg">
