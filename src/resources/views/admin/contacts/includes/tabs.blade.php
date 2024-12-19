@@ -1,4 +1,4 @@
-<div class="card" x-data="{ show: 'items' }">
+<div class="card overflow-visible" x-data="{ show: 'items' }">
     <div class="card-header">
         <x-tt::tabs class="flex items-center space-x-indent-half">
             <x-tt::tabs.item name="items"

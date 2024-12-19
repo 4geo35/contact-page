@@ -27,10 +27,11 @@ class ItemsWire extends Component
         $phones = $this->contact->phones()->orderBy("priority")->get();
         $emails = $this->contact->emails()->orderBy("priority")->get();
         $urls = $this->contact->urls()->orderBy("priority")->get();
+        $socials = $this->contact->socials()->orderBy("priority")->get();
 
         return view(
             'ctp::livewire.admin.contacts.items-wire',
-            compact("phones", "emails", "urls")
+            compact("phones", "emails", "urls", "socials")
         );
     }
 

@@ -12,6 +12,8 @@
     "Comment": "Комментарий",
     "Url address": "Адрес сайта",
     "Url addresses": "Адреса сайтов",
+    "Social network": "Социальная сеть",
+    "Social networks": "Социальные сети",
 
     "List is empty": "Список пуст",
     "Contact successfully added": "Контакт успешно добавлен",
@@ -40,5 +42,8 @@
     "Email address successfully updated": "Email адрес успешно обновлен",
 
     "Url address successfully added": "Адрес сайта успешно добавлен",
-    "Url address successfully updated": "Адрес сайта успешно обновлен"
+    "Url address successfully updated": "Адрес сайта успешно обновлен",
+
+    "Social network successfully added": "Социальная сеть успешно добавлена",
+    "Social network successfully updated": "Социальная сеть успешно добавлена"
 }

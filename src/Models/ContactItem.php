@@ -12,6 +12,7 @@ class ContactItem extends Model implements ContactItemInterface
         "type",
         "value",
         "comment",
+        "additionally"
     ];
 
     public function contact(): BelongsTo
