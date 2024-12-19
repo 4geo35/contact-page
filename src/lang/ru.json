@@ -26,10 +26,14 @@
     "Error while update coordinates": "Ошибка при обновлении координат",
     "Save point coordinates": "Сохранить координаты метки",
 
-    "Phone number successfully added": "Номер телефона успешно добавлен",
     "Item not found": "Элемент не найден",
     "Delete item": "Удалить элемент",
     "It will be impossible to restore the item!": "Будет невозможно восстановить элемент!",
     "Element successfully deleted": "Элемент успешно удален",
-    "Phone number successfully updated": "Номер телефона успешно обновлен"
+
+    "Phone number successfully added": "Номер телефона успешно добавлен",
+    "Phone number successfully updated": "Номер телефона успешно обновлен",
+
+    "Email address successfully added": "Email адрес успешно добавлен",
+    "Email address successfully updated": "Email адрес успешно обновлен"
 }

@@ -5,94 +5,30 @@ namespace GIS\ContactPage\Livewire\Admin\Contacts;
 use GIS\ContactPage\Interfaces\ContactInterface;
 use GIS\ContactPage\Interfaces\ContactItemInterface;
 use GIS\ContactPage\Models\ContactItem;
+use GIS\ContactPage\Traits\EditEmailsTrait;
+use GIS\ContactPage\Traits\EditPhonesTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class ItemsWire extends Component
 {
+    use EditPhonesTrait, EditEmailsTrait;
+
     public ContactInterface $contact;
 
     public int|null $itemId = null;
     public string|null $type = null;
     public bool $displayDelete = false;
 
-    public string $phone = "";
-    public string $phoneComment = "";
-    public string $editPhone = "";
-    public string $editPhoneComment = "";
-    public bool $displayPhoneEdit = false;
-
     public function render(): View
     {
         $phones = $this->contact->phones()->orderBy("priority")->get();
+        $emails = $this->contact->emails()->orderBy("priority")->get();
 
         return view(
             'ctp::livewire.admin.contacts.items-wire',
-            compact("phones")
+            compact("phones", "emails")
         );
-    }
-
-    public function addPhone(): void
-    {
-        $this->validate([
-            "phone" => ["required", "max:18"],
-            "phoneComment" => ["nullable", "max:150"]
-        ], [], [
-            "phone" => __("Phone"),
-            "phoneComment" => __("Comment")
-        ]);
-
-        $this->contact->items()->create([
-            "type" => "phone",
-            "value" => $this->phone,
-            "comment" => $this->phoneComment
-        ]);
-        session()->flash("phone-success", __("Phone number successfully added"));
-
-        $this->reset("phone", "phoneComment");
-    }
-
-    public function showPhoneEdit(int $id): void
-    {
-        $this->itemId = $id;
-        $this->type = "phone";
-        $item = $this->findItem();
-        if (! $item) {
-            $this->resetGeneralFields();
-            return;
-        }
-        $this->editPhone = $item->value;
-        $this->editPhoneComment = $item->comment;
-        $this->displayPhoneEdit = true;
-    }
-
-    public function closePhoneEdit(): void
-    {
-        $this->resetGeneralFields();
-        $this->reset("displayPhoneEdit");
-    }
-
-    public function updatePhone(): void
-    {
-        $this->type = "phone";
-        $item = $this->findItem();
-        if (! $item) {
-            $this->resetGeneralFields();
-            return;
-        }
-        $this->validate([
-            "editPhone" => ["required", "max:18"],
-            "editPhoneComment" => ["nullable", "max:150"]
-        ], [], [
-            "editPhone" => __("Phone"),
-            "editPhoneComment" => __("Comment")
-        ]);
-        $item->update([
-            "value" => $this->editPhone,
-            "comment" => $this->editPhoneComment
-        ]);
-        session()->flash("phone-success", __("Phone number successfully updated"));
-        $this->closePhoneEdit();
     }
 
     public function showDelete(int $id, string $type): void
