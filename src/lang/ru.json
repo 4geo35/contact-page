@@ -15,5 +15,9 @@
     "List of possible labels": "Список возможных меток",
     "Select one of the contacts, or add a new one": "Выберите один из контактов, или добавьте новый",
     "Contact successfully deleted": "Контакт успешно удален",
-    "Contact successfully updated": "Контакт успешно обновлен"
+    "Contact successfully updated": "Контакт успешно обновлен",
+    "Wrong coordinates": "Неправильные координаты",
+    "Coordinates successfully updated": "Координаты успешно обновлены",
+    "Error while update coordinates": "Ошибка при обновлении координат",
+    "Save point coordinates": "Сохранить координаты метки"
 }

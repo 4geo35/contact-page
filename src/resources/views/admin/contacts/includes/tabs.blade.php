@@ -24,7 +24,9 @@
     <div class="card-body">
         <x-tt::tabs.content name="contacts">Contacts</x-tt::tabs.content>
 
-        <x-tt::tabs.content name="map">Map</x-tt::tabs.content>
+        <x-tt::tabs.content name="map">
+            <livewire:ctp-contact-map :contact="$contact" />
+        </x-tt::tabs.content>
 
         <x-tt::tabs.content name="workDays">Work days</x-tt::tabs.content>
     </div>
