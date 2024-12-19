@@ -1,7 +1,7 @@
-<div class="card" x-data="{ show: 'map' }">
+<div class="card" x-data="{ show: 'items' }">
     <div class="card-header">
         <x-tt::tabs class="flex items-center space-x-indent-half">
-            <x-tt::tabs.item name="contacts"
+            <x-tt::tabs.item name="items"
                              active="bg-primary text-white"
                              passive="bg-transparent text-primary hover:text-primary-hover"
                              class="px-indent py-indent-half mb-2 rounded-xl">
@@ -22,7 +22,9 @@
         </x-tt::tabs>
     </div>
     <div class="card-body">
-        <x-tt::tabs.content name="contacts">Contacts</x-tt::tabs.content>
+        <x-tt::tabs.content name="items">
+            <livewire:ctp-contact-items :contact="$contact" />
+        </x-tt::tabs.content>
 
         <x-tt::tabs.content name="map">
             <livewire:ctp-contact-map :contact="$contact" />

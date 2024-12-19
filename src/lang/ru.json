@@ -7,6 +7,10 @@
     "Map": "Карта",
     "Work days": "Рабочие дни",
 
+    "Phones": "Телефоны",
+    "Phone": "Телефон",
+    "Comment": "Комментарий",
+
     "List is empty": "Список пуст",
     "Contact successfully added": "Контакт успешно добавлен",
     "Contact not found": "Контакт не найден",
@@ -16,8 +20,15 @@
     "Select one of the contacts, or add a new one": "Выберите один из контактов, или добавьте новый",
     "Contact successfully deleted": "Контакт успешно удален",
     "Contact successfully updated": "Контакт успешно обновлен",
+
     "Wrong coordinates": "Неправильные координаты",
     "Coordinates successfully updated": "Координаты успешно обновлены",
     "Error while update coordinates": "Ошибка при обновлении координат",
-    "Save point coordinates": "Сохранить координаты метки"
+    "Save point coordinates": "Сохранить координаты метки",
+
+    "Phone number successfully added": "Номер телефона успешно добавлен",
+    "Item not found": "Элемент не найден",
+    "Delete item": "Удалить элемент",
+    "It will be impossible to restore the item!": "Будет невозможно восстановить элемент!",
+    "Element successfully deleted": "Элемент успешно удален"
 }

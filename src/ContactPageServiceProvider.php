@@ -6,6 +6,7 @@ use GIS\ContactPage\Livewire\Admin\Contacts\CreateWire as ContactCreateWire;
 use GIS\ContactPage\Livewire\Admin\Contacts\ListWire as ContactListWire;
 use GIS\ContactPage\Livewire\Admin\Contacts\ShowWire as ContactShowWire;
 use GIS\ContactPage\Livewire\Admin\Contacts\MapWire as ContactMapWire;
+use GIS\ContactPage\Livewire\Admin\Contacts\ItemsWire as ContactItemsWire;
 use GIS\ContactPage\Models\Contact;
 use GIS\ContactPage\Models\ContactItem;
 use GIS\ContactPage\Observers\ContactItemObserver;
@@ -50,7 +51,7 @@ class ContactPageServiceProvider extends ServiceProvider
 
     protected function addLivewireComponents(): void
     {
-        // Contacts
+        // Contact
         $component = config("contact-page.customContactCreateComponent");
         Livewire::component(
             "ctp-contact-create",
@@ -73,6 +74,13 @@ class ContactPageServiceProvider extends ServiceProvider
         Livewire::component(
             "ctp-contact-map",
             $component ?? ContactMapWire::class
+        );
+
+        // Contact Item
+        $component = config("contact-page.customContactItemsComponent");
+        Livewire::component(
+            "ctp-contact-items",
+            $component ?? ContactItemsWire::class
         );
     }
 }

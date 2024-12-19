@@ -18,4 +18,5 @@ return [
     // Contact Items
     "customContactItemModel" => null,
     "customContactItemObserver" => null,
+    "customContactItemsComponent" => null,
 ];
