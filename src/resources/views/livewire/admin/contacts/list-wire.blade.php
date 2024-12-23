@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-indent">
     <div class="card-body">
         @if (!$contacts->count())
             <p>{{ __("List is empty") }}</p>

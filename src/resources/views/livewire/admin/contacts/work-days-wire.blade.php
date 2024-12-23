@@ -1,5 +1,5 @@
 <div class="space-y-indent-half">
-    <button type="button" class="btn btn-outline-primary" wire:click="saveDays">
+    <button type="button" class="btn btn-outline-primary" wire:click="saveDays" wire:attribute.loading="disabled">
         {{ __("Save work time") }}
     </button>
 

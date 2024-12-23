@@ -5,10 +5,10 @@
     <div class="space-y-indent-half">
         <livewire:ctp-contact-create />
         <div class="row">
-            <div class="col w-1/3">
+            <div class="col w-full md:w-1/3">
                 <livewire:ctp-contact-list />
             </div>
-            <div class="col w-2/3">
+            <div class="col w-full md:w-2/3">
                 <livewire:ctp-contact-show />
             </div>
         </div>
