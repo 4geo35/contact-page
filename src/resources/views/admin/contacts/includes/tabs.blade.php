@@ -1,4 +1,4 @@
-<div class="card overflow-visible" x-data="{ show: 'items' }">
+<div class="card overflow-visible" x-data="{ show: 'workDays' }">
     <div class="card-header">
         <x-tt::tabs class="flex items-center space-x-indent-half">
             <x-tt::tabs.item name="items"
@@ -30,6 +30,8 @@
             <livewire:ctp-contact-map :contact="$contact" />
         </x-tt::tabs.content>
 
-        <x-tt::tabs.content name="workDays">Work days</x-tt::tabs.content>
+        <x-tt::tabs.content name="workDays">
+            <livewire:ctp-contact-work-days :contact="$contact" />
+        </x-tt::tabs.content>
     </div>
 </div>

@@ -15,6 +15,7 @@ return [
     "customContactListComponent" => null,
     "customContactShowComponent" => null,
     "customContactMapComponent" => null,
+    "customContactWorkDaysComponent" => null,
     // Contact Items
     "customContactItemModel" => null,
     "customContactItemObserver" => null,
