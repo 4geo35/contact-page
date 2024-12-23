@@ -45,5 +45,9 @@
     "Url address successfully updated": "Адрес сайта успешно обновлен",
 
     "Social network successfully added": "Социальная сеть успешно добавлена",
-    "Social network successfully updated": "Социальная сеть успешно добавлена"
+    "Social network successfully updated": "Социальная сеть успешно добавлена",
+
+    "Save work time": "Сохранить рабочее время",
+    "Work time successfully updated": "Рабочее время успешно обновлено",
+    "Error while update work time": "Ошибка во время обновления рабочего времени"
 }

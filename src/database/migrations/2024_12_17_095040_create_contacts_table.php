@@ -37,7 +37,7 @@ return new class extends Migration
                 ->nullable()
                 ->comment("Долгота");
 
-            $table->json("work_times")
+            $table->json("work_time")
                 ->nullable()
                 ->comment("Описание времени работы");
 

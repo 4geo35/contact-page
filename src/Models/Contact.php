@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Contact extends Model implements ContactInterface
 {
+    const DAYS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
     protected $fillable = [
         "title",
         "address",
@@ -16,6 +18,28 @@ class Contact extends Model implements ContactInterface
         "longitude",
         "ico",
     ];
+
+    protected $casts = [
+        "work_time" => "array"
+    ];
+
+    public function getWorkTimesAttribute(): array
+    {
+        $times = $this->work_time;
+        if (empty($times)) {
+            $times = [];
+            for ($i = 0; $i < 7; $i++) {
+                $times[$i] = [
+                    "workTime" => "",
+                    "dinerTime" => "",
+                    "name" => self::DAYS[$i],
+                    "number" => $i,
+                    "holiday" => $i > 4,
+                ];
+            }
+        }
+        return $times;
+    }
 
     public function items(): HasMany
     {
