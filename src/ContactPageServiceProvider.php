@@ -45,6 +45,7 @@ class ContactPageServiceProvider extends ServiceProvider
 
         // routes
         $this->loadRoutesFrom(__DIR__ . "/routes/admin.php");
+        $this->loadRoutesFrom(__DIR__ . "/routes/web.php");
 
         // translations
         $this->loadJsonTranslationsFrom(__DIR__ . "/lang");
