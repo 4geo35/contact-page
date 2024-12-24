@@ -4,7 +4,7 @@
     <x-tt::notifications.error prefix="phone-" />
     <x-tt::notifications.success prefix="phone-" />
 
-
+    @can("update", $contact)
         <form wire:submit.prevent="addPhone"
               class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half"
               x-data>
@@ -31,7 +31,7 @@
                 {{ __("Add") }}
             </button>
         </form>
-
+    @endcan
 
     @if ($phones->count())
         <div class="p-indent-half border border-secondary rounded-lg beautify-scrollbar overflow-x-auto">
@@ -75,6 +75,7 @@
                                 </form>
                             </td>
                         @else
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex items-center">
                                     <button type="button" class="btn btn-primary btn-sm px-btn-x-ico rounded-e-none"
@@ -93,12 +94,14 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                             <td class="p-indent-xs">
                                 <div class="font-medium">{{ $phoneItem->value }}</div>
                             </td>
                             <td class="p-indent-xs">
                                 <div class="text-secondary">{{ $phoneItem->comment }}</div>
                             </td>
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex justify-end">
                                     <button type="button" class="btn btn-dark px-btn-x-ico rounded-e-none"
@@ -113,6 +116,7 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                         @endif
                     </tr>
                 @endforeach

@@ -4,6 +4,7 @@
     <x-tt::notifications.error prefix="social-" />
     <x-tt::notifications.success prefix="social-" />
 
+    @can("update", $contact)
     <form wire:submit.prevent="addSocial"
           class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
         <div class="space-x-indent-half flex items-center w-full md:w-auto md:flex-auto">
@@ -87,6 +88,7 @@
             {{ __("Add") }}
         </button>
     </form>
+    @endcan
 
     @if ($socials->count())
         <div class="p-indent-half border border-secondary rounded-lg beautify-scrollbar overflow-x-auto">
@@ -118,6 +120,7 @@
                                 </form>
                             </td>
                         @else
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex items-center">
                                     <button type="button" class="btn btn-primary btn-sm px-btn-x-ico rounded-e-none"
@@ -136,6 +139,7 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                             <td class="p-indent-xs">
                                 @php($componentName = "ctp::ico.{$socialItem->additionally}")
                                 <x-dynamic-component :component="$componentName" class="w-6 h-6"/>
@@ -143,6 +147,7 @@
                             <td class="p-indent-xs">
                                 <div class="font-medium text-nowrap">{{ $socialItem->value }}</div>
                             </td>
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex justify-end">
                                     <button type="button" class="btn btn-dark px-btn-x-ico rounded-e-none"
@@ -157,6 +162,7 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                         @endif
                     </tr>
                 @endforeach

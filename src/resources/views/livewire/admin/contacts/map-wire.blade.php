@@ -3,11 +3,13 @@
         <x-tt::notifications.error prefix="map-" />
         <x-tt::notifications.success prefix="map-" />
 
-        <button type="button" class="btn btn-outline-primary"
-                wire:click="saveCoordinates()"
-                @if (! $newCoordinates) disabled @else wire:attribute.loading="disabled" @endif>
-            {{ __("Save point coordinates") }}
-        </button>
+        @can("update", $contact)
+            <button type="button" class="btn btn-outline-primary"
+                    wire:click="saveCoordinates()"
+                    @if (! $newCoordinates) disabled @else wire:attribute.loading="disabled" @endif>
+                {{ __("Save point coordinates") }}
+            </button>
+        @endcan
     </div>
 
     <div id="mapData"

@@ -3,12 +3,15 @@
 namespace GIS\ContactPage\Livewire\Admin\Contacts;
 
 use GIS\ContactPage\Interfaces\ContactInterface;
+use GIS\ContactPage\Traits\AuthContactTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
 class MapWire extends Component
 {
+    use AuthContactTrait;
+
     public ContactInterface $contact;
     public array|null $newCoordinates = null;
 
@@ -32,6 +35,10 @@ class MapWire extends Component
 
     public function saveCoordinates(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("map-", "update", $this->contact);
+        if (! $check) return;
+
         if (empty($this->newCoordinates) || count($this->newCoordinates) !== 2) {
             session()->flash("map-error", __("Wrong coordinates"));
             $this->reset("newCoordinates");

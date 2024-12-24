@@ -4,30 +4,32 @@
     <x-tt::notifications.error prefix="email-" />
     <x-tt::notifications.success prefix="email-" />
 
-    <form wire:submit.prevent="addEmail"
-          class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
-        <div class="w-full md:w-auto flex-auto">
-            <input type="email" id="email" required
-                   placeholder="Email" aria-label="Email"
-                   class="form-control {{ $errors->has("email") ? "border-danger" : "" }}"
-                   wire:loading.attr="disabled"
-                   wire:model="email">
-            <x-tt::form.error name="email"/>
-        </div>
+    @can("update", $contact)
+        <form wire:submit.prevent="addEmail"
+              class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
+            <div class="w-full md:w-auto flex-auto">
+                <input type="email" id="email" required
+                       placeholder="Email" aria-label="Email"
+                       class="form-control {{ $errors->has("email") ? "border-danger" : "" }}"
+                       wire:loading.attr="disabled"
+                       wire:model="email">
+                <x-tt::form.error name="email"/>
+            </div>
 
-        <div class="w-full md:w-auto flex-auto">
-            <input type="text" id="emailComment"
-                   placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
-                   class="form-control {{ $errors->has("emailComment") ? "border-danger" : "" }}"
-                   wire:loading.attr="disabled"
-                   wire:model="emailComment">
-            <x-tt::form.error name="emailComment"/>
-        </div>
+            <div class="w-full md:w-auto flex-auto">
+                <input type="text" id="emailComment"
+                       placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
+                       class="form-control {{ $errors->has("emailComment") ? "border-danger" : "" }}"
+                       wire:loading.attr="disabled"
+                       wire:model="emailComment">
+                <x-tt::form.error name="emailComment"/>
+            </div>
 
-        <button type="submit" class="btn btn-primary w-full md:w-auto">
-            {{ __("Add") }}
-        </button>
-    </form>
+            <button type="submit" class="btn btn-primary w-full md:w-auto">
+                {{ __("Add") }}
+            </button>
+        </form>
+    @endcan
 
     @if ($emails->count())
         <div class="p-indent-half border border-secondary rounded-lg beautify-scrollbar overflow-x-auto">
@@ -69,6 +71,7 @@
                                 </form>
                             </td>
                         @else
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex items-center mr-indent-half">
                                     <button type="button" class="btn btn-primary btn-sm px-btn-x-ico rounded-e-none"
@@ -87,12 +90,14 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                             <td class="p-indent-xs">
                                 <div class="font-medium text-nowrap">{{ $emailItem->value }}</div>
                             </td>
                             <td class="p-indent-xs">
                                 <div class="text-secondary text-nowrap">{{ $emailItem->comment }}</div>
                             </td>
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex justify-end">
                                     <button type="button" class="btn btn-dark px-btn-x-ico rounded-e-none"
@@ -107,6 +112,7 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                         @endif
                     </tr>
                 @endforeach

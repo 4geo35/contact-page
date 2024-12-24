@@ -4,6 +4,7 @@ namespace GIS\ContactPage\Livewire\Admin\Contacts;
 
 use GIS\ContactPage\Interfaces\ContactInterface;
 use GIS\ContactPage\Models\Contact;
+use GIS\ContactPage\Traits\AuthContactTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\Attributes\On;

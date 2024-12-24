@@ -4,21 +4,23 @@
     <x-tt::notifications.error prefix="url-" />
     <x-tt::notifications.success prefix="url-" />
 
-    <form wire:submit.prevent="addUrl"
-          class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
-        <div class="w-full md:w-auto flex-auto">
-            <input type="text" id="url" required
-                   placeholder="{{ __('Url address') }}" aria-label="{{ __('Url address') }}"
-                   class="form-control {{ $errors->has("url") ? "border-danger" : "" }}"
-                   wire:loading.attr="disabled"
-                   wire:model="url">
-            <x-tt::form.error name="url"/>
-        </div>
+    @can("update", $contact)
+        <form wire:submit.prevent="addUrl"
+              class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
+            <div class="w-full md:w-auto flex-auto">
+                <input type="text" id="url" required
+                       placeholder="{{ __('Url address') }}" aria-label="{{ __('Url address') }}"
+                       class="form-control {{ $errors->has("url") ? "border-danger" : "" }}"
+                       wire:loading.attr="disabled"
+                       wire:model="url">
+                <x-tt::form.error name="url"/>
+            </div>
 
-        <button type="submit" class="btn btn-primary w-full md:w-auto">
-            {{ __("Add") }}
-        </button>
-    </form>
+            <button type="submit" class="btn btn-primary w-full md:w-auto">
+                {{ __("Add") }}
+            </button>
+        </form>
+    @endcan
 
     @if ($urls->count())
         <div class="p-indent-half border border-secondary rounded-lg beautify-scrollbar overflow-x-auto">
@@ -50,6 +52,7 @@
                                 </form>
                             </td>
                         @else
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex items-center">
                                     <button type="button" class="btn btn-primary btn-sm px-btn-x-ico rounded-e-none"
@@ -68,9 +71,11 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                             <td class="p-indent-xs">
                                 <div class="font-medium text-nowrap">{{ $urlItem->value }}</div>
                             </td>
+                            @can("update", $contact)
                             <td class="p-indent-xs">
                                 <div class="flex justify-end">
                                     <button type="button" class="btn btn-dark px-btn-x-ico rounded-e-none"
@@ -85,6 +90,7 @@
                                     </button>
                                 </div>
                             </td>
+                            @endcan
                         @endif
                     </tr>
                 @endforeach

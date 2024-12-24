@@ -3,11 +3,14 @@
 namespace GIS\ContactPage\Livewire\Admin\Contacts;
 
 use GIS\ContactPage\Interfaces\ContactInterface;
+use GIS\ContactPage\Traits\AuthContactTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class WorkDaysWire extends Component
 {
+    use AuthContactTrait;
+
     public ContactInterface $contact;
     public array $workTimeData;
 
@@ -32,6 +35,10 @@ class WorkDaysWire extends Component
 
     public function saveDays(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("work-days-", "update", $this->contact);
+        if (! $check) return;
+
         try {
             $this->contact->work_time = $this->workTimeData;
             $this->contact->save();

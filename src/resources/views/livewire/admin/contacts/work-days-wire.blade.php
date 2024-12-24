@@ -1,7 +1,9 @@
 <div class="space-y-indent-half">
-    <button type="button" class="btn btn-outline-primary" wire:click="saveDays" wire:attribute.loading="disabled">
-        {{ __("Save work time") }}
-    </button>
+    @can("update", $contact)
+        <button type="button" class="btn btn-outline-primary" wire:click="saveDays" wire:attribute.loading="disabled">
+            {{ __("Save work time") }}
+        </button>
+    @endcan
 
     <x-tt::notifications.error prefix="work-days-" />
     <x-tt::notifications.success prefix="work-days-" />
