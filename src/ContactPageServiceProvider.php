@@ -12,6 +12,7 @@ use GIS\ContactPage\Models\Contact;
 use GIS\ContactPage\Models\ContactItem;
 use GIS\ContactPage\Observers\ContactItemObserver;
 use GIS\ContactPage\Observers\ContactObserver;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
@@ -33,6 +34,13 @@ class ContactPageServiceProvider extends ServiceProvider
         $contactItemObserverClass = config("contact-page.customContactItemObserver") ?? ContactItemObserver::class;
         $contactItemModelClass = config("contact-page.customContactItemModel") ?? ContactItem::class;
         $contactItemModelClass::observe($contactItemObserverClass);
+
+        // Policy
+        $contactModelClass = config("contact-page.customContactModel") ?? Contact::class;
+        Gate::policy($contactModelClass, config("contact-page.contactPolicy"));
+
+        // Добавить политики в конфигурацию
+        $this->expandConfiguration();
     }
 
     public function register(): void
@@ -90,5 +98,18 @@ class ContactPageServiceProvider extends ServiceProvider
             "ctp-contact-items",
             $component ?? ContactItemsWire::class
         );
+    }
+
+    protected function expandConfiguration(): void
+    {
+        $um = app()->config["user-management"];
+        $permissions = $um["permissions"];
+        $ctp = app()->config["contact-page"];
+        $permissions[] = [
+            "title" => $ctp["contactPolicyTitle"],
+            "policy" => $ctp["contactPolicy"],
+            "key" => $ctp["contactPolicyKey"]
+        ];
+        app()->config["user-management.permissions"] = $permissions;
     }
 }

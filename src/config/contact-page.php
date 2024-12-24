@@ -22,4 +22,9 @@ return [
     "customContactItemModel" => null,
     "customContactItemObserver" => null,
     "customContactItemsComponent" => null,
+
+    // Policy
+    "contactPolicyTitle" => "Управление контактами",
+    "contactPolicy" => \GIS\ContactPage\Policies\ContactPolicy::class,
+    "contactPolicyKey" => "contacts",
 ];
