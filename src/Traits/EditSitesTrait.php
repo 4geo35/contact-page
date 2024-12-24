@@ -10,6 +10,10 @@ trait EditSitesTrait
 
     public function addUrl(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("url-", "update", $this->contact);
+        if (! $check) return;
+
         $this->validate([
             "url" => ["required", "url", "max:250"],
         ], [], [
@@ -27,6 +31,10 @@ trait EditSitesTrait
 
     public function showUrlEdit(int $id): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("url-", "update", $this->contact);
+        if (! $check) return;
+
         $this->itemId = $id;
         $this->type = "url";
         $item = $this->findItem();
@@ -47,6 +55,10 @@ trait EditSitesTrait
 
     public function updateUrl(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("url-", "update", $this->contact);
+        if (! $check) return;
+
         $this->type = "url";
         $item = $this->findItem();
         if (! $item) {

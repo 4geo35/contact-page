@@ -3,11 +3,14 @@
 namespace GIS\ContactPage\Livewire\Admin\Contacts;
 
 use GIS\ContactPage\Models\Contact;
+use GIS\ContactPage\Traits\AuthContactTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class CreateWire extends Component
 {
+    use AuthContactTrait;
+
     public string $title = "";
 
     public function rules(): array
@@ -31,7 +34,10 @@ class CreateWire extends Component
 
     public function store(): void
     {
-        // TODO: check auth
+        // Проверить авторизацию
+        $check = $this->checkAuth("create-", "create");
+        if (! $check) return;
+
         // Validation
         $this->validate();
         $contactModel = config("contact-page.customContactModel") ?? Contact::class;

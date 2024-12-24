@@ -4,12 +4,15 @@ namespace GIS\ContactPage\Livewire\Admin\Contacts;
 
 use GIS\ContactPage\Interfaces\ContactInterface;
 use GIS\ContactPage\Models\Contact;
+use GIS\ContactPage\Traits\AuthContactTrait;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
 class ShowWire extends Component
 {
+    use AuthContactTrait;
+
     public ContactInterface|null $contact = null;
     public int|null $contactId = null;
 
@@ -70,10 +73,16 @@ class ShowWire extends Component
         $this->address = $contact->address ?? "";
         $this->description = $contact->description ?? "";
         $this->ico = $contact->ico ?? "";
+        $this->dispatch("update-contact");
+        $this->dispatch("fresh-map");
     }
 
     public function update(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("show-", "update", $this->contact);
+        if (! $check) return;
+
         $this->validate();
 
         $contact = $this->findContact($this->contact->id);
@@ -92,6 +101,7 @@ class ShowWire extends Component
             session()->flash("show-success", __("Contact successfully updated"));
 
             $this->dispatch("update-contact");
+            $this->dispatch("fresh-map");
         } catch (\Exception $exception) {
             session()->flash("error", __("Error while update"));
         }
@@ -99,7 +109,9 @@ class ShowWire extends Component
 
     public function showDelete(): void
     {
-        // TODO: check auth
+        // Проверить авторизацию
+        $check = $this->checkAuth("show-", "delete", $this->contact);
+        if (! $check) return;
         $this->displayDelete = true;
     }
 
@@ -110,7 +122,10 @@ class ShowWire extends Component
 
     public function confirmDelete(): void
     {
-        // TODO: check auth
+        // Проверить авторизацию
+        $check = $this->checkAuth("show-", "delete", $this->contact);
+        if (! $check) return;
+
         try {
             $this->contact->delete();
             session()->flash("show-success", __("Contact successfully deleted"));

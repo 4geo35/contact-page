@@ -3,7 +3,9 @@
     <x-slot name="pageTitle">{{ __("Contacts") }}</x-slot>
 
     <div class="space-y-indent-half">
-        <livewire:ctp-contact-create />
+        @can("create", config("contact-page.customContactModel") ?? \GIS\ContactPage\Models\Contact::class)
+            <livewire:ctp-contact-create />
+        @endcan
         <div class="row">
             <div class="col w-full md:w-1/3">
                 <livewire:ctp-contact-list />

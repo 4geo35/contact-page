@@ -16,6 +16,10 @@ trait EditSocialsTrait
 
     public function addSocial(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("social-", "update", $this->contact);
+        if (! $check) return;
+
         $this->validate([
             "social" => ["required", "max:250"],
         ], [], [
@@ -34,6 +38,10 @@ trait EditSocialsTrait
 
     public function showSocialEdit(int $id): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("social-", "update", $this->contact);
+        if (! $check) return;
+
         $this->itemId = $id;
         $this->type = "social";
         $item = $this->findItem();
@@ -54,6 +62,10 @@ trait EditSocialsTrait
 
     public function updateSocial(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("social-", "update", $this->contact);
+        if (! $check) return;
+
         $this->type = "social";
         $item = $this->findItem();
         if (! $item) {

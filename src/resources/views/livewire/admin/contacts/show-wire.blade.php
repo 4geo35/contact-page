@@ -13,3 +13,5 @@
         @include("ctp::admin.contacts.includes.show-modals")
     @endif
 </div>
+
+@include("ctp::admin.contacts.includes.map-script")

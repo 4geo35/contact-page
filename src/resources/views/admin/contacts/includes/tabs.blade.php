@@ -23,15 +23,15 @@
     </div>
     <div class="card-body">
         <x-tt::tabs.content name="items">
-            <livewire:ctp-contact-items :contact="$contact" />
+            <livewire:ctp-contact-items :contact="$contact" :key="'item-' . $contact->id" />
         </x-tt::tabs.content>
 
         <x-tt::tabs.content name="map">
-            <livewire:ctp-contact-map :contact="$contact" />
+            <livewire:ctp-contact-map :contact="$contact" :key="'map-' . $contact->id" />
         </x-tt::tabs.content>
 
         <x-tt::tabs.content name="workDays">
-            <livewire:ctp-contact-work-days :contact="$contact" />
+            <livewire:ctp-contact-work-days :contact="$contact" :key="'days-' . $contact->id" />
         </x-tt::tabs.content>
     </div>
 </div>

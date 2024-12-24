@@ -10,6 +10,7 @@
                 <input type="text" id="title"
                        class="form-control {{ $errors->has("title") ? "border-danger" : "" }}"
                        required
+                       @cannot("update", $contact) disabled @endcan
                        wire:loading.attr="disabled"
                        wire:model="title">
                 <x-tt::form.error name="title"/>
@@ -21,6 +22,7 @@
                 </label>
                 <input type="text" id="address"
                        class="form-control {{ $errors->has("address") ? "border-danger" : "" }}"
+                       @cannot("update", $contact) disabled @endcan
                        wire:loading.attr="disabled"
                        wire:model="address">
                 <x-tt::form.error name="address"/>
@@ -32,6 +34,7 @@
                 </label>
                 <input type="text" id="description"
                        class="form-control {{ $errors->has("description") ? "border-danger" : "" }}"
+                       @cannot("update", $contact) disabled @endcan
                        wire:loading.attr="disabled"
                        wire:model="description">
                 <x-tt::form.error name="description"/>
@@ -43,6 +46,7 @@
                 </label>
                 <input type="text" id="ico"
                        class="form-control {{ $errors->has("ico") ? "border-danger" : "" }}"
+                       @cannot("update", $contact) disabled @endcan
                        wire:loading.attr="disabled"
                        wire:model="ico">
                 <x-tt::form.error name="ico"/>
@@ -52,10 +56,16 @@
             </div>
 
             <div class="flex items-center">
-                <button type="submit" class="btn btn-primary rounded-e-none">{{ __("Update") }}</button>
+                <button type="submit" class="btn btn-primary rounded-e-none"
+                        @cannot("update", $contact) disabled
+                        @else wire:loading.attr="disabled"
+                        @endcan>
+                    {{ __("Update") }}
+                </button>
                 <button type="button" class="btn btn-danger px-btn-x-ico rounded-s-none"
-{{--                        TODO: add can--}}
-                        wire:loading.attr="disabled"
+                        @cannot("delete", $contact) disabled
+                        @else wire:loading.attr="disabled"
+                        @endcan
                         wire:click="showDelete()">
                     <x-tt::ico.trash />
                 </button>

@@ -12,6 +12,10 @@ trait EditPhonesTrait
 
     public function addPhone(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("phone-", "update", $this->contact);
+        if (! $check) return;
+
         $this->validate([
             "phone" => ["required", "max:18"],
             "phoneComment" => ["nullable", "max:150"]
@@ -32,6 +36,10 @@ trait EditPhonesTrait
 
     public function showPhoneEdit(int $id): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("phone-", "update", $this->contact);
+        if (! $check) return;
+
         $this->itemId = $id;
         $this->type = "phone";
         $item = $this->findItem();
@@ -52,6 +60,10 @@ trait EditPhonesTrait
 
     public function updatePhone(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("phone-", "update", $this->contact);
+        if (! $check) return;
+
         $this->type = "phone";
         $item = $this->findItem();
         if (! $item) {

@@ -12,6 +12,10 @@ trait EditEmailsTrait
 
     public function addEmail(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("email-", "update", $this->contact);
+        if (! $check) return;
+
         $this->validate([
             "email" => ["required", "email", "max:150"],
             "emailComment" => ["nullable", "max:150"]
@@ -32,6 +36,10 @@ trait EditEmailsTrait
 
     public function showEmailEdit(int $id): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("email-", "update", $this->contact);
+        if (! $check) return;
+
         $this->itemId = $id;
         $this->type = "email";
         $item = $this->findItem();
@@ -53,6 +61,10 @@ trait EditEmailsTrait
 
     public function updateEmail(): void
     {
+        // Проверить авторизацию
+        $check = $this->checkAuth("email-", "update", $this->contact);
+        if (! $check) return;
+
         $this->type = "email";
         $item = $this->findItem();
         if (! $item) {

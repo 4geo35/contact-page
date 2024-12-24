@@ -5,6 +5,7 @@ namespace GIS\ContactPage\Livewire\Admin\Contacts;
 use GIS\ContactPage\Interfaces\ContactInterface;
 use GIS\ContactPage\Interfaces\ContactItemInterface;
 use GIS\ContactPage\Models\ContactItem;
+use GIS\ContactPage\Traits\AuthContactTrait;
 use GIS\ContactPage\Traits\EditEmailsTrait;
 use GIS\ContactPage\Traits\EditPhonesTrait;
 use GIS\ContactPage\Traits\EditSitesTrait;
@@ -14,13 +15,18 @@ use Livewire\Component;
 
 class ItemsWire extends Component
 {
-    use EditPhonesTrait, EditEmailsTrait, EditSitesTrait, EditSocialsTrait;
+    use EditPhonesTrait, EditEmailsTrait, EditSitesTrait, EditSocialsTrait, AuthContactTrait;
 
     public ContactInterface $contact;
 
     public int|null $itemId = null;
     public string|null $type = null;
     public bool $displayDelete = false;
+
+    public function mount(ContactInterface $contact): void
+    {
+        $this->contact = $contact;
+    }
 
     public function render(): View
     {
@@ -37,6 +43,11 @@ class ItemsWire extends Component
 
     public function showDelete(int $id, string $type): void
     {
+        $prefix = $this->type ? "{$this->type}-" : "items-";
+        // Проверить авторизацию
+        $check = $this->checkAuth($prefix, "update", $this->contact);
+        if (! $check) return;
+
         $this->resetGeneralFields();
         $this->itemId = $id;
         $this->type = $type;
@@ -47,13 +58,17 @@ class ItemsWire extends Component
 
     public function confirmDelete(): void
     {
+        $prefix = $this->type ? "{$this->type}-" : "items-";
+        // Проверить авторизацию
+        $check = $this->checkAuth($prefix, "update", $this->contact);
+        if (! $check) return;
+
         $item = $this->findItem();
         if (! $item) {
             $this->closeDelete();
             return;
         }
         $item->delete();
-        $prefix = $this->type ? "{$this->type}-" : "items-";
         session()->flash("{$prefix}success", __("Element successfully deleted"));
         $this->closeDelete();
     }
@@ -66,6 +81,11 @@ class ItemsWire extends Component
 
     public function moveUp(int $id, string $type): void
     {
+        $prefix = $this->type ? "{$this->type}-" : "items-";
+        // Проверить авторизацию
+        $check = $this->checkAuth($prefix, "update", $this->contact);
+        if (! $check) return;
+
         $this->itemId = $id;
         $item = $this->findItem($type);
         if (! $item) return;
@@ -82,6 +102,11 @@ class ItemsWire extends Component
 
     public function moveDown(int $id, string $type): void
     {
+        $prefix = $this->type ? "{$this->type}-" : "items-";
+        // Проверить авторизацию
+        $check = $this->checkAuth($prefix, "update", $this->contact);
+        if (! $check) return;
+
         $this->itemId = $id;
         $this->type = $type;
         $item = $this->findItem();

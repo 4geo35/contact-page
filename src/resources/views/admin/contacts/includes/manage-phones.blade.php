@@ -4,32 +4,34 @@
     <x-tt::notifications.error prefix="phone-" />
     <x-tt::notifications.success prefix="phone-" />
 
-    <form wire:submit.prevent="addPhone"
-          class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half"
-          x-data>
-        <div class="w-full md:w-auto flex-auto">
-            <input type="text" id="phone" required
-                   placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
-                   class="form-control {{ $errors->has("phone") ? "border-danger" : "" }}"
-                   x-mask="+7 (999) 999-99-99"
-                   wire:loading.attr="disabled"
-                   wire:model="phone">
-            <x-tt::form.error name="phone"/>
-        </div>
 
-        <div class="w-full md:w-auto flex-auto">
-            <input type="text" id="phoneComment"
-                   placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
-                   class="form-control {{ $errors->has("phoneComment") ? "border-danger" : "" }}"
-                   wire:loading.attr="disabled"
-                   wire:model="phoneComment">
-            <x-tt::form.error name="phoneComment"/>
-        </div>
+        <form wire:submit.prevent="addPhone"
+              class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half"
+              x-data>
+            <div class="w-full md:w-auto flex-auto">
+                <input type="text" id="phone" required
+                       placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
+                       class="form-control {{ $errors->has("phone") ? "border-danger" : "" }}"
+                       x-mask="+7 (999) 999-99-99"
+                       wire:loading.attr="disabled"
+                       wire:model="phone">
+                <x-tt::form.error name="phone"/>
+            </div>
 
-        <button type="submit" class="btn btn-primary w-full md:w-auto">
-            {{ __("Add") }}
-        </button>
-    </form>
+            <div class="w-full md:w-auto flex-auto">
+                <input type="text" id="phoneComment"
+                       placeholder="{{ __('Comment') }}" aria-label="{{ __('Comment') }}"
+                       class="form-control {{ $errors->has("phoneComment") ? "border-danger" : "" }}"
+                       wire:loading.attr="disabled"
+                       wire:model="phoneComment">
+                <x-tt::form.error name="phoneComment"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full md:w-auto">
+                {{ __("Add") }}
+            </button>
+        </form>
+
 
     @if ($phones->count())
         <div class="p-indent-half border border-secondary rounded-lg beautify-scrollbar overflow-x-auto">

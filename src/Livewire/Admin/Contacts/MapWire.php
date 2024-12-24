@@ -22,7 +22,6 @@ class MapWire extends Component
     {
         $this->contact->fresh();
         $this->reset("newCoordinates");
-        $this->dispatch("fresh-map");
     }
 
     #[On("move-point")]
