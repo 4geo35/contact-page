@@ -2,7 +2,7 @@
     <ul class="mb-indent-half space-y-1">
         @if (count($contact->dayGroups) == 1)
             <li class="flex flex-nowrap items-start">
-                <span class="text-sm">
+                <span class="">
                     <span class="text-nowrap">{{ $contact->dayGroups[0]["time"] }}</span>
                     {{ $contact->dayGroups[0]["dinerTime"]? " (обед ".$contact->dayGroups[0]["dinerTime"].")" : "(без обеда)" }}
                 </span>
@@ -14,9 +14,9 @@
             @foreach($contact->dayGroups as $day)
                 <li class="flex flex-nowrap items-start">
                     @if ($day["start"] != $day["end"])
-                        <span class="text-sm pr-2 text-nowrap">{{ $day["start"] }} - {{ $day["end"] }}:</span>
+                        <span class=" pr-2 text-nowrap">{{ $day["start"] }} - {{ $day["end"] }}:</span>
                     @else
-                        <span class="text-sm pr-2 text-nowrap">{{ $day["start"] }}:</span>
+                        <span class=" pr-2 text-nowrap">{{ $day["start"] }}:</span>
                     @endif
                     <span class="text-sm">
                         {{ $day["time"] ? $day["time"] : "Выходной" }}

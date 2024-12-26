@@ -1,14 +1,14 @@
 @if ($contact->phones)
     <ul class="mb-indent-sm">
         @foreach($contact->phones as $item)
-            <li>
-                @if ($item->comment)
-                    <span class="text-secondary text-sm">{{ $item->comment }}</span>
-                    <br>
-                @endif
-                <a href="tel:{{ $item->value }}" class="text-body hover:text-primary-hover">
+            <li class="mb-2">
+                <a href="tel:{{ $item->value }}" class="text-body hover:text-primary-hover font-semibold text-lg">
                     {{ $item->value }}
                 </a>
+                @if ($item->comment)
+                    <br>
+                    <span class="text-secondary text-sm">{{ $item->comment }}</span>
+                @endif
             </li>
         @endforeach
     </ul>
@@ -17,14 +17,14 @@
 @if ($contact->emails)
     <ul class="mb-indent-sm">
         @foreach($contact->emails as $item)
-            <li>
-                @if ($item->comment)
-                    <span class="text-secondary text-sm">{{ $item->comment }}</span>
-                    <br>
-                @endif
+            <li class="mb-2">
                 <a href="mailto:{{ $item->value }}" class="text-body hover:text-primary-hover">
                     {{ $item->value }}
                 </a>
+                @if ($item->comment)
+                    <br>
+                    <span class="text-secondary text-sm">{{ $item->comment }}</span>
+                @endif
             </li>
         @endforeach
     </ul>
@@ -33,7 +33,7 @@
 @if ($contact->urls)
     <ul class="mb-indent-sm">
         @foreach($contact->urls as $item)
-            <li>
+            <li class="mb-2">
                 <a href="{{ $item->value }}" target="_blank" class="text-body hover:text-primary-hover">
                     {{ $item->value }}
                 </a>

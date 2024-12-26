@@ -14,7 +14,7 @@ class ShowWire extends Component
     use AuthContactTrait;
 
     public ContactInterface|null $contact = null;
-    public int|null $contactId = null;
+    public int|string $contactId = "";
 
     public bool $displayDelete = false;
 

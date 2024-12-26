@@ -13,7 +13,7 @@ class ListWire extends Component
 {
     public bool $hasSearch = false;
     public string $updatedAt;
-    public int|null $contactId = null;
+    public int|string $contactId = "";
 
     protected function queryString(): array
     {
