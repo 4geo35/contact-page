@@ -7,7 +7,6 @@
                 ymaps.ready(initMap)
             })
             Livewire.on('fresh-map', () => {
-                console.log("Hello")
                 setTimeout(() => freshMap(), 500)
             })
         })()
