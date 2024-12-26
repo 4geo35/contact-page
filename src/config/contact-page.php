@@ -8,6 +8,8 @@ return [
     "defaultMapZoom" => "14",
     "webPageUrl" => "contacts",
     "customContactController" => null,
+    "useBreadcrumbs" => true,
+    "useH1" => true,
 
     // Admin
     // Contacts
