@@ -10,6 +10,7 @@ return [
     "customContactController" => null,
     "useBreadcrumbs" => true,
     "useH1" => true,
+    "customWebContactItemComponent" => null,
 
     // Admin
     // Contacts
