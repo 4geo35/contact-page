@@ -4,7 +4,7 @@
     <div class="mr-indent">
         <x-ctp::ico.place />
     </div>
-    <div class="{{ $teaser ? '' : 'mb-indent' }}">
+    <div>
         @if ($teaser)
             <div class="text-lg font-semibold leading-6 cursor-pointer hover:text-body/40"
                  @click="
@@ -21,7 +21,10 @@
             </div>
         @endif
         @if ($contact->address)
-            <div class="text-sm text-secondary">{{ $contact->address }}</div>
+            <div class="text-body/60">{{ $contact->address }}</div>
+        @endif
+        @if ($contact->description && ! $teaser)
+            <div class="text-sm text-body/60">{{ $contact->description }}</div>
         @endif
     </div>
 </div>

@@ -1,31 +1,31 @@
 @if (count($contact->dayGroups))
-    <ul class="mb-indent-half space-y-1">
-        @if (count($contact->dayGroups) == 1)
-            <li class="flex flex-nowrap items-start">
-                <span class="">
-                    <span class="text-nowrap">{{ $contact->dayGroups[0]["time"] }}</span>
-                    {{ $contact->dayGroups[0]["dinerTime"]? " (обед ".$contact->dayGroups[0]["dinerTime"].")" : "(без обеда)" }}
-                </span>
-            </li>
-            <li class="flex flex-nowrap items-center">
-                <span class="text-sm">Без выходных</span>
-            </li>
-        @else
+    <div class="flex items-start justify-start">
+        <div class="mr-indent">
+            <x-ctp::ico.calendar />
+        </div>
+        <div class="space-y-2 flex-auto">
             @foreach($contact->dayGroups as $day)
-                <li class="flex flex-nowrap items-start">
-                    @if ($day["start"] != $day["end"])
-                        <span class=" pr-2 text-nowrap">{{ $day["start"] }} - {{ $day["end"] }}:</span>
-                    @else
-                        <span class=" pr-2 text-nowrap">{{ $day["start"] }}:</span>
-                    @endif
-                    <span class="text-sm">
-                        {{ $day["time"] ? $day["time"] : "Выходной" }}
-                        @if($day["time"])
-                            <span class="text-nowrap">{{ $day["dinerTime"] ? " (обед ".$day["dinerTime"].")" : " (без обеда)" }}</span>
-                        @endif
-                    </span>
-                </li>
+                <div class="flex items-stretch justify-start">
+                    <div class="w-2 mr-indent-sm rounded-full {{ empty($day['time']) ? 'bg-[#E58787]' : 'bg-[#ABE587]' }}"></div>
+                    <div class="flex-auto">
+                        <div class="text-body text-sm">
+                            @if ($day["start"] != $day["end"]) {{ $day["start"] }} - {{ $day["end"] }}
+                            @else {{ $day["start"] }}
+                            @endif
+                        </div>
+                        <div class="flex items-end justify-between border-b border-stroke">
+                            <div class="text-body text-lg">
+                                {{ empty($day["time"]) ? "Выходной" : $day["time"] }}
+                            </div>
+                            @if (! empty($day["time"]))
+                                <div class="text-body/40 text-sm">
+                                    {{ $day["dinerTime"] ? "Обед {$day['dinerTime']}" : "Без обеда" }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             @endforeach
-        @endif
-    </ul>
+        </div>
+    </div>
 @endif

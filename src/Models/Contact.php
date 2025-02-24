@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Contact extends Model implements ContactInterface
 {
-    const DAYS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+    const DAYS = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
 
     protected $fillable = [
         "title",

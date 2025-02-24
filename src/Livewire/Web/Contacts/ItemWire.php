@@ -16,6 +16,7 @@ class ItemWire extends Component
 
     public function render(): View
     {
+        debugbar()->info($this->contact->dayGroups);
         return view('ctp::livewire.web.contacts.item-wire');
     }
 
