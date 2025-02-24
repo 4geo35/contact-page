@@ -10,13 +10,5 @@
          data-latitude="{{ $contact->latitude }}"
          data-ico="{{ $contact->ico }}"></div>
 
-    <button type="button" class="cursor-pointer hover:text-primary-hover"
-            @click="
-                $dispatch('switch-contact', { id: {{ $contact->id }} });
-                $dispatch('move-to', { el: $refs.contact{{ $contact->id }} });
-                document.getElementById('map').scrollIntoView();
-                current = {{ $contact->id }}
-                ">
-        {{ $contact->title }}
-    </button>
+    @include("ctp::web.includes.title")
 </div>
