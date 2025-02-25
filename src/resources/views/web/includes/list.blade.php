@@ -14,9 +14,14 @@
                 <livewire:ctp-web-contact-item :contact="$contact" :items="$contacts" />
             </div>
             <div class="col w-2/3">
-                @foreach($contacts as $item)
-                    <x-ctp::teaser :contact="$item" />
-                @endforeach
+                <div class="row">
+                    @foreach($contacts as $item)
+                        <div class="col w-1/2 mb-indent">
+                            <x-ctp::teaser :contact="$item" />
+                        </div>
+                    @endforeach
+                </div>
+                @include("ctp::web.includes.under-list")
             </div>
         </div>
     </div>

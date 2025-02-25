@@ -1,4 +1,4 @@
-@if ($contact->phones)
+@if ($contact->phones->count())
     <div class="flex">
         <div class="mr-indent">
             <x-ctp::ico.phone />
@@ -18,7 +18,7 @@
     </div>
 @endif
 
-@if ($contact->emails)
+@if ($contact->emails->count())
     <div class="flex">
         <div class="mr-indent">
             <x-ctp::ico.email />
@@ -38,7 +38,7 @@
     </div>
 @endif
 
-@if ($contact->urls)
+@if ($contact->urls->count())
     <div class="flex">
         <div class="mr-indent">
             <x-ctp::ico.web />
@@ -53,7 +53,7 @@
     </div>
 @endif
 
-@if ($contact->socials)
+@if ($contact->socials->count())
     <div class="flex">
         <div class="mr-indent">
             <x-ctp::ico.socials />

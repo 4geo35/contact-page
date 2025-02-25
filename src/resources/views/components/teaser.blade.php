@@ -1,6 +1,6 @@
 @props(["contact"])
 
-<div class="rounded-base shadow-md p-indent mb-indent transition-all"
+<div class="rounded-base shadow-md p-indent transition-all h-full"
      :class="current === {{ $contact->id }} ? 'bg-secondary/10' : 'bg-white'">
     <div class="map-point" x-ref="contact{{ $contact->id }}"
          data-id="{{ $contact->id }}"
