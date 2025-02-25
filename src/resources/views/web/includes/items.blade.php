@@ -9,7 +9,7 @@
                     @if ($item->comment)
                         <div class="text-body/60 leading-5">{{ $item->comment }}</div>
                     @endif
-                    <a href="tel:{{ $item->value }}" class="text-body hover:text-primary-hover font-bold text-lg leading-6">
+                    <a href="tel:{{ $item->value }}" class="text-body hover:text-primary-hover font-bold xs:text-lg leading-6">
                         {{ $item->value }}
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                     @if ($item->comment)
                         <div class="text-body/60 leading-5">{{ $item->comment }}</div>
                     @endif
-                    <a href="mailto:{{ $item->value }}" class="text-body hover:text-primary-hover font-bold text-lg leading-6">
+                    <a href="mailto:{{ $item->value }}" class="text-body hover:text-primary-hover font-bold xs:text-lg leading-6">
                         {{ $item->value }}
                     </a>
                 </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="space-y-2">
             @foreach($contact->urls as $item)
-                <a href="{{ $item->value }}" target="_blank" class="text-body hover:text-primary-hover font-bold text-lg leading-6">
+                <a href="{{ $item->value }}" target="_blank" class="text-body hover:text-primary-hover font-bold xs:text-lg leading-6">
                     {{ $item->value }}
                 </a>
             @endforeach

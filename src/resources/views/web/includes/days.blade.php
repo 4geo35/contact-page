@@ -8,17 +8,17 @@
                 <div class="flex items-stretch justify-start">
                     <div class="w-2 mr-indent-sm rounded-full {{ empty($day['time']) ? 'bg-[#E58787]' : 'bg-[#ABE587]' }}"></div>
                     <div class="flex-auto">
-                        <div class="text-body text-sm">
+                        <div class="text-body text-sm text-nowrap">
                             @if ($day["start"] != $day["end"]) {{ $day["start"] }} - {{ $day["end"] }}
                             @else {{ $day["start"] }}
                             @endif
                         </div>
-                        <div class="flex items-end justify-between border-b border-stroke">
-                            <div class="text-body text-lg">
+                        <div class="flex flex-wrap items-end justify-between border-b border-stroke">
+                            <div class="text-body xs:text-lg text-nowrap mr-indent-half">
                                 {{ empty($day["time"]) ? "Выходной" : $day["time"] }}
                             </div>
                             @if (! empty($day["time"]))
-                                <div class="text-body/40 text-sm">
+                                <div class="text-body/40 text-sm text-nowrap">
                                     {{ $day["dinerTime"] ? "Обед {$day['dinerTime']}" : "Без обеда" }}
                                 </div>
                             @endif

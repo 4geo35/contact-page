@@ -3,7 +3,6 @@
 namespace GIS\ContactPage\Livewire\Web\Contacts;
 
 use GIS\ContactPage\Interfaces\ContactInterface;
-use GIS\ContactPage\Models\Contact;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -16,7 +15,6 @@ class ItemWire extends Component
 
     public function render(): View
     {
-        debugbar()->info($this->contact->phones);
         return view('ctp::livewire.web.contacts.item-wire');
     }
 
