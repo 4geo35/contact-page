@@ -28,13 +28,13 @@
 
         <div class="container">
             <div class="row" x-data="{ current: {{ $contact->id }} }">
-                <div class="col w-1/3">
+                <div class="col w-full lg:w-1/2 xl:w-1/3">
                     <livewire:ctp-web-contact-item :contact="$contact" :items="$contacts" />
                 </div>
-                <div class="col w-2/3">
+                <div class="col w-full lg:w-1/2 xl:w-2/3">
                     <div class="row {{ $contacts->count() <= 1 ? 'hidden' : '' }}">
                         @foreach($contacts as $item)
-                            <div class="col w-1/2 mb-indent">
+                            <div class="col w-full xl:w-1/2 mb-indent">
                                 <x-ctp::teaser :contact="$item" />
                             </div>
                         @endforeach
