@@ -1,6 +1,6 @@
 @props(["teaser" => true])
 
-<div class="flex items-start justify-start">
+<div class="flex">
     <div class="mr-indent">
         <x-ctp::ico.place />
     </div>
