@@ -6,13 +6,11 @@
 
     @can("update", $contact)
         <form wire:submit.prevent="addPhone"
-              class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half"
-              x-data>
+              class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
             <div class="w-full md:w-auto flex-auto">
                 <input type="text" id="phone" required
                        placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
                        class="form-control {{ $errors->has("phone") ? "border-danger" : "" }}"
-                       x-mask="+7 (999) 999-99-99"
                        wire:loading.attr="disabled"
                        wire:model="phone">
                 <x-tt::form.error name="phone"/>
@@ -42,13 +40,11 @@
                         @if ($displayPhoneEdit && $itemId === $phoneItem->id)
                             <td class="p-indent-xs" colspan="4">
                                 <form wire:submit.prevent="updatePhone"
-                                      class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half"
-                                      x-data>
+                                      class="flex flex-col md:flex-row items-center space-y-indent-half md:space-y-0 md:space-x-indent-half">
                                     <div class="flex-auto">
                                         <input type="text" id="editPhone" required
                                                placeholder="{{ __('Phone') }}" aria-label="{{ __('Phone') }}"
                                                class="form-control {{ $errors->has("editPhone") ? "border-danger" : "" }}"
-                                               x-mask="+7 (999) 999-99-99"
                                                wire:loading.attr="disabled"
                                                wire:model="editPhone">
                                         <x-tt::form.error name="editPhone"/>

@@ -16,7 +16,7 @@ class CreateWire extends Component
     public function rules(): array
     {
         return [
-            "title" => ["required", "string", "max:50"],
+            "title" => ["required", "string", "max:150"],
         ];
     }
 

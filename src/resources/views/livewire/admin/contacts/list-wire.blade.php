@@ -13,7 +13,7 @@
                             <td class="align-middle border-none !px-0 !py-indent-half">
                                 <div class="flex items-center h-full">
                                     <x-tt::ico.bars drag-grab class="text-secondary mr-indent cursor-grab" />
-                                    <button type="button" class="w-full text-left hover:text-primary {{ $contactId === $item->id ? 'underline text-primary' : '' }}"
+                                    <button type="button" class="w-full text-left hover:text-primary cursor-pointer {{ $contactId === $item->id ? 'underline text-primary' : '' }}"
                                             wire:click="setContact({{ $item->id }})">
                                         {{ $item->title }}
                                     </button>

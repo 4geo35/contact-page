@@ -40,8 +40,8 @@ class ShowWire extends Component
     public function rules(): array
     {
         return [
-            "title" => ["required", "string", "max:50"],
-            "address" => ["nullable", "string", "max:50"],
+            "title" => ["required", "string", "max:150"],
+            "address" => ["nullable", "string", "max:250"],
             "description" => ["nullable", "string", "max:250"],
             "ico" => ["required", "string", "max:100"]
         ];
