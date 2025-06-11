@@ -28,17 +28,10 @@ class ContactPageServiceProvider extends ServiceProvider
         $this->addLivewireComponents();
 
         // Observers
-        $contactObserverClass = config("contact-page.customContactObserver") ?? ContactObserver::class;
-        $contactModelClass = config("contact-page.customContactModel") ?? Contact::class;
-        $contactModelClass::observe($contactObserverClass);
-
-        $contactItemObserverClass = config("contact-page.customContactItemObserver") ?? ContactItemObserver::class;
-        $contactItemModelClass = config("contact-page.customContactItemModel") ?? ContactItem::class;
-        $contactItemModelClass::observe($contactItemObserverClass);
+        $this->observeModels();
 
         // Policy
-        $contactModelClass = config("contact-page.customContactModel") ?? Contact::class;
-        Gate::policy($contactModelClass, config("contact-page.contactPolicy"));
+        $this->setPolicies();
 
         // Добавить политики в конфигурацию
         $this->expandConfiguration();
@@ -58,6 +51,22 @@ class ContactPageServiceProvider extends ServiceProvider
 
         // translations
         $this->loadJsonTranslationsFrom(__DIR__ . "/lang");
+    }
+
+    protected function setPolicies(): void
+    {
+        Gate::policy(config("contact-page.customContactModel") ?? Contact::class, config("contact-page.contactPolicy"));
+    }
+
+    protected function observeModels(): void
+    {
+        $contactObserverClass = config("contact-page.customContactObserver") ?? ContactObserver::class;
+        $contactModelClass = config("contact-page.customContactModel") ?? Contact::class;
+        $contactModelClass::observe($contactObserverClass);
+
+        $contactItemObserverClass = config("contact-page.customContactItemObserver") ?? ContactItemObserver::class;
+        $contactItemModelClass = config("contact-page.customContactItemModel") ?? ContactItem::class;
+        $contactItemModelClass::observe($contactItemObserverClass);
     }
 
     protected function addLivewireComponents(): void
