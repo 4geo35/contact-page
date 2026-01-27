@@ -18,4 +18,22 @@ class ContactItemObserver
         if (empty($priority)) $priority = 0;
         $contactItem->priority = $priority + 1;
     }
+
+    public function created(ContactItemInterface $contactItem): void
+    {
+        $contact = $contactItem->contact;
+        if (! empty($contact)) { $contact->touch(); }
+    }
+
+    public function updated(ContactItemInterface $contactItem): void
+    {
+        $contact = $contactItem->contact;
+        if (! empty($contact)) { $contact->touch(); }
+    }
+
+    public function deleted(ContactItemInterface $contactItem): void
+    {
+        $contact = $contactItem->contact;
+        if (! empty($contact)) { $contact->touch(); }
+    }
 }
