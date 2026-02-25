@@ -19,38 +19,27 @@ use Livewire\Livewire;
 
 class ContactPageServiceProvider extends ServiceProvider
 {
-    public function boot(): void
-    {
-        // views
-        $this->loadViewsFrom(__DIR__ . "/resources/views", "ctp");
-
-        // Livewire
-        $this->addLivewireComponents();
-
-        // Observers
-        $this->observeModels();
-
-        // Policy
-        $this->setPolicies();
-
-        // Добавить политики в конфигурацию
-        $this->expandConfiguration();
-    }
-
     public function register(): void
     {
-        // migrations
         $this->loadMigrationsFrom(__DIR__ . "/database/migrations");
 
-        // config
         $this->mergeConfigFrom(__DIR__ . "/config/contact-page.php", "contact-page");
 
-        // routes
+        $this->loadJsonTranslationsFrom(__DIR__ . "/lang");
+    }
+
+    public function boot(): void
+    {
+        $this->loadViewsFrom(__DIR__ . "/resources/views", "ctp");
+
         $this->loadRoutesFrom(__DIR__ . "/routes/admin.php");
         $this->loadRoutesFrom(__DIR__ . "/routes/web.php");
 
-        // translations
-        $this->loadJsonTranslationsFrom(__DIR__ . "/lang");
+        $this->expandConfiguration();
+        $this->observeModels();
+        $this->setPolicies();
+
+        $this->addLivewireComponents();
     }
 
     protected function setPolicies(): void
