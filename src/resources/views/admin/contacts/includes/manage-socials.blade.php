@@ -57,6 +57,11 @@
                         </button>
 
                         <button type="button" class="p-indent-half inline-flex items-center justify-center border border-secondary rounded-lg hover:text-primary m-indent-half"
+                                @click="show = false" wire:click="setIco('max')">
+                            <x-ctp::ico.max />
+                        </button>
+
+                        <button type="button" class="p-indent-half inline-flex items-center justify-center border border-secondary rounded-lg hover:text-primary m-indent-half"
                                 @click="show = false" wire:click="setIco('wa')">
                             <x-ctp::ico.wa />
                         </button>
