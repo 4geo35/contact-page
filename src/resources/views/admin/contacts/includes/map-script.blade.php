@@ -27,9 +27,9 @@
                 center: [longitude, latitude],
                 zoom: {{ config('contact-page.defaultMapZoom') }},
                 controls: ['smallMapDefaultSet']
-            }, {
-                searchControlProvider: 'yandex#search'
             })
+            map.controls.remove("searchControl")
+            map.controls.remove("geolocationControl")
 
             let pointToEvent = new ymaps.GeoObject({
                 geometry: {

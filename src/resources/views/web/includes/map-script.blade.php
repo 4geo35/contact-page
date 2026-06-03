@@ -32,6 +32,8 @@
                 zoom: {{ config('contact-page.defaultMapZoom') }},
                 controls: ['smallMapDefaultSet']
             })
+            map.controls.remove("searchControl")
+            map.controls.remove("geolocationControl")
             map.behaviors.disable("scrollZoom")
 
             let points = document.querySelectorAll(".map-point");
