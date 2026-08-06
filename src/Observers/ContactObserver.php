@@ -2,6 +2,8 @@
 
 namespace GIS\ContactPage\Observers;
 
+use GIS\ContactPage\Events\ContactChanged;
+use GIS\ContactPage\Events\ContactCreated;
 use GIS\ContactPage\Events\ContactDeleted;
 use GIS\ContactPage\Events\ContactUpdated;
 use GIS\ContactPage\Interfaces\ContactInterface;
@@ -23,9 +25,16 @@ class ContactObserver
         $contact->priority = $priority + 1;
     }
 
+    public function created(ContactInterface $contact): void
+    {
+        ContactCreated::dispatch($contact);
+        ContactChanged::dispatch($contact->id, "created");
+    }
+
     public function updated(ContactInterface $contact): void
     {
         ContactUpdated::dispatch($contact);
+        ContactChanged::dispatch($contact->id, "updated");
     }
 
     public function deleted(ContactInterface $contact): void
@@ -35,5 +44,6 @@ class ContactObserver
         }
 
         ContactDeleted::dispatch($contact->id);
+        ContactChanged::dispatch($contact->id, "deleted");
     }
 }
