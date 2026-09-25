@@ -3,28 +3,33 @@
 return [
     "mapApiKey" => env('MAP_API_KEY', ''),
     "defaultIco" => "islands#blueIcon",
-    "defaultLatitude" => "39.90092731952594",
-    "defaultLongitude" => "59.21567389811249",
-    "defaultMapZoom" => "14",
+    "defaultLatitude" => env("MAP_DEFAULT_LATITUDE", "39.90092731952594"),
+    "defaultLongitude" => env("MAP_DEFAULT_LONGITUDE", "59.21567389811249"),
+    "defaultMapZoom" => env("MAP_DEFAULT_ZOOM", "14"),
     "webPageUrl" => "contacts",
-    "customContactController" => null,
     "useBreadcrumbs" => true,
     "useH1" => true,
-    "customWebContactItemComponent" => null,
 
-    // Admin
-    // Contacts
+    // Models
     "customContactModel" => null,
     "customContactObserver" => null,
+
+    "customContactItemModel" => null,
+    "customContactItemObserver" => null,
+
+    // Controllers
+    "customContactController" => null,
+
+    // Wire Components
     "customContactCreateComponent" => null,
     "customContactListComponent" => null,
     "customContactShowComponent" => null,
     "customContactMapComponent" => null,
     "customContactWorkDaysComponent" => null,
-    // Contact Items
-    "customContactItemModel" => null,
-    "customContactItemObserver" => null,
+
     "customContactItemsComponent" => null,
+
+    "customWebContactItemComponent" => null,
 
     // Policy
     "contactPolicyTitle" => "Управление контактами",
