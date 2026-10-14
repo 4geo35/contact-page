@@ -7,7 +7,7 @@ use GIS\ContactPage\Models\Contact;
 
 trait AuthContactTrait
 {
-    protected function checkAuth(string $prefix, string $action, ContactInterface $contact = null): bool
+    protected function checkAuth(string $prefix, string $action, ?ContactInterface $contact = null): bool
     {
         try {
             $this->authorize($action, $contact ?? (config("contact-page.customContactModel") ?? Contact::class));

@@ -50,7 +50,7 @@ class ListWire extends Component
     }
 
     #[On('new-contact')]
-    public function updateList(int $id = null): void
+    public function updateList(?int $id = null): void
     {
         $this->dispatch("update-list");
         $this->updatedAt = now()->toString();
